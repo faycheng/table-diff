@@ -1,0 +1,8 @@
+[Left]
+    DSN = "root:password@tcp(127.0.0.1:13306)/table_diff"
+    Table = "table_diff_test"
+
+[Right]
+    DSN = "root:password@tcp(127.0.0.1:13307)/table_diff"
+    Table = "table_diff_test"
+
