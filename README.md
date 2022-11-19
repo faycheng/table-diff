@@ -65,6 +65,35 @@ DiffColumns = ["id", "col01", "col02"]
     File = "/tmp/table-diff.diff"
 ```
 
+# Performance Benchmark
+
+benchmark environment:
+- cpu: 40 cores, memory: 90 GB
+- database: MySQL 8.0
+- rows: 10,000,000 rows, 28 columns per table
+
+### benchmark report
+
+case 1: segStep=1000, worker=16
+how long the comparing task takes to run?
+0m14.038s
+
+case 2: segStep=2000, worker=16
+how long the comparing task takes to run?
+0m13.858s
+
+case 3: segStep=5000, worker=16
+how long the comparing task takes to run?
+0m13.935s
+
+case 4: segStep=2000, worker=8
+how long the comparing task takes to run?
+0m14.161s
+
+case 5: segStep=2000, worker=32
+how long the comparing task takes to run?
+0m16.262s
+
 # Usage Limitation
 
 - only support two types of relation databases: MySQL and MariaDB
