@@ -181,7 +181,6 @@ func (d *differ) diff() (err error) {
 				}
 				res = append(res, row)
 			}
-			//spew.Dump(res)
 			return res, err
 		}
 		var (

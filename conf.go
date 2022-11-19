@@ -134,6 +134,15 @@ func (c *config) checkAndFix() error {
 			return fmt.Errorf("bad configuration item(%s) of the right table", "diff cols")
 		}
 	}
+	contain := false
+	for _, col := range c.DiffColumns {
+		if col == c.PrimaryKey {
+			contain = true
+		}
+	}
+	if !contain {
+		c.DiffColumns = append(c.DiffColumns, c.PrimaryKey)
+	}
 	maxKey := func(db *gorm.DB, table string) (int64, error) {
 		id := int64(0)
 		row := db.Raw(fmt.Sprintf("SELECT max(%s) FROM `%s`", c.PrimaryKey, table)).Row()
